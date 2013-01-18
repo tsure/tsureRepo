@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+			<bean id = "triangle" class = "com.spring.example.Triangle">
+				<!-- When there is just one constructor that takes in String type -->
+				
+				<!-- <property name="type" value = "eqilateral"></property>  -->  
+				
+				<!-- When there are two constructors with same signature but different input types, you can use the type attribute -->
+				
+				<constructor-arg type="java.lang.String" value="20"></constructor-arg>
+				
+				<!-- When there is a constructor that has two arguments  setType(arg1,arg2)-->
+				
+				<!-- 
+				<constructor-arg value="Equilateral"></constructor-arg>
+				<constructor-arg value="20"></constructor-arg>
+				 -->
+			</bean>
+			
+			<bean id="triangleWithPoints" class="com.spring.example.TriangleWithPoints">
+				<property name="pointA" ref="point1"></property>
+				<!-- Showing Inner Bean ! -->
+				<property name="pointB">
+				
+					<bean class="com.spring.example.Point">
+						<property name="x" value ="0"></property>
+						<property name="y" value ="-20"></property>
+					</bean>
+				
+				</property>
+				<property name="pointC" ref="point3">
+				
+				<!-- <idref bean="point3"></idref> Do more research ! -->		<!-- Just to make sure that there is a bean with id "point3" ..just for safety, behaves just like ref -->			
+				
+				</property>
+			</bean>
+			
+			
+			<bean id ="point1" class="com.spring.example.Point">
+				<property name="x" value ="0"></property>
+				<property name="y" value ="0"></property>
+			</bean>
+			
+			
+			
+			<bean id ="point3" class="com.spring.example.Point">
+				<property name="x" value ="20"></property>
+				<property name="y" value ="0"></property>
+			</bean>
+
+			<!-- Aliases demo 
+				You can even do this by giving a "name" attribute in bean with id triangleWithPoints! 
+			-->
+			<alias name="triangleWithPoints" alias="triangle-alias"/>
+
+   </beans>
