@@ -16,8 +16,16 @@ public class JDBCDemo {
 		jdbcDaoImpl dao = ctx.getBean("jdbcDaoImpl", jdbcDaoImpl.class);
 		
 		//Circle circle = new JDBCDAOImpl().getCircle(1);
-		Circle circle = dao.getCircle(1);
-		System.out.println(circle.getName());
+		//Circle circle = dao.getCircle(1);
+		//System.out.println(circle.getName());
+		
+		//System.out.println(dao.getCircleCount());
+//		dao.insertCircle(new Circle(3,"Third Circle"));
+//		System.out.println(dao.getCircleForId(1).getName());
+//		System.out.println(dao.getAllCircles().size());
+		
+		dao.createTriangleTable();
+		
 
 	}
 
